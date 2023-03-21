@@ -9,8 +9,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
 
-    <AssemblyName>StayOnOrigin</AssemblyName>
-    <Version>1.0.1</Version>
+    <AssemblyName>StayOnOrigin+</AssemblyName>
+    <Version>1.0.0</Version>
     <Copyright>Copyright © 2023 Dyvinia</Copyright>
     <Company>Dyvinia</Company>
   </PropertyGroup>

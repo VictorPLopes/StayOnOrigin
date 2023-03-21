@@ -1,10 +1,10 @@
+using DyviniaUtils;
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.Reflection;
-using DyviniaUtils;
-using Microsoft.Win32;
 
-namespace StayOnOrigin {
+namespace StayOnOriginPlus {
     internal class Program {
         public static string OriginPath => Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Origin")?.GetValue("OriginPath")?.ToString();
         public static Version OriginVersion => new(FileVersionInfo.GetVersionInfo(OriginPath).FileVersion.Replace(",", "."));
@@ -12,15 +12,15 @@ namespace StayOnOrigin {
 
         static void Main() {
             // Version and Stuff
-            Console.WriteLine($"StayOnOrigin v{Assembly.GetEntryAssembly().GetName().Version.ToString()[..5]} by Dyvinia");
+            Console.WriteLine($"StayOnOrigin+ v{Assembly.GetEntryAssembly().GetName().Version.ToString()[..5]} by VictorPL\n" +
+                               "    Forked from StayOnOrigin by Dyvinia and VictorPL");
             WriteSeparator();
 
             // Check if Origin Exists
             if (!File.Exists(OriginPath)) {
                 Console.WriteLine("Origin is not installed or could not be found.");
                 Console.WriteLine("Press Y to install Origin, or any other key to exit.");
-                ConsoleKeyInfo key = Console.ReadKey();
-                if (key.Key != ConsoleKey.Y)
+                if (Console.ReadKey().Key != ConsoleKey.Y)
                     Environment.Exit(0);
                 Console.WriteLine("\nDownloading Origin...");
                 ResetTempDir();
@@ -40,7 +40,7 @@ namespace StayOnOrigin {
                 WriteSeparator();
             }
             else {
-                Console.WriteLine($"Origin v{OriginVersion}");
+                Console.WriteLine($"Found Origin v{OriginVersion}");
                 WriteSeparator();
             }
 
@@ -53,17 +53,25 @@ namespace StayOnOrigin {
             DisableMigration();
             WriteSeparator();
 
+            // Enable R&D mode
+            Console.WriteLine("Press Y to enable Origin's hidden R&D mode for (reportedly) better downloads, or any other key to skip.");
+            if (Console.ReadKey().Key == ConsoleKey.Y)
+                EnableResearchDevelopment(OriginPath.Replace("Origin.exe", "EACore.ini"));
+            WriteSeparator();
+
             // End
             ResetTempDir(false);
             Console.WriteLine("Done");
-            Console.Write("Press Any Key to Exit...");
-            Console.ReadKey();
+            WriteSeparator();
+            Console.WriteLine("Press Y if you would like to launch Origin (and exit), or any other key to exit.");
+            if (Console.ReadKey().Key == ConsoleKey.Y)
+                Process.Start(OriginPath);
         }
 
         static async Task InstallOrigin() {
-            // Download from EA Servers
-            //string originURL = @"https://cdn.discordapp.com/attachments/693482239593283694/1086045449191968899/OriginSetup_1.exe";
-            string originURL = @"https://download.dm.origin.com/origin/live/OriginSetup.exe";
+            // Download Origin
+            string originURL = @"https://cdn.discordapp.com/attachments/693482239593283694/1086045449191968899/OriginSetup_1.exe";
+            //string originURL = @"https://download.dm.origin.com/origin/live/OriginSetup.exe";
             string destinationPath = Path.Combine(TempDirPath, Path.GetFileName(originURL));
 
             IProgress<double> progress = new Progress<double>(p => {
@@ -113,7 +121,8 @@ namespace StayOnOrigin {
             if (File.Exists(path) && !File.GetAttributes(path).HasFlag(FileAttributes.ReadOnly)) {
                 // Backup file by copying to file.exe.bak
                 Console.WriteLine($"Backing up {path}");
-                File.Copy(path, path + ".bak", true);
+                if (!File.Exists(path + ".bak"))
+                    File.Copy(path, path + ".bak");
 
                 // Replace the contents of the file with nothing
                 Console.WriteLine($"Clearing {path}");
@@ -123,6 +132,13 @@ namespace StayOnOrigin {
                 if (readOnly)
                     File.SetAttributes(path, FileAttributes.ReadOnly);
             }
+            else
+                Console.WriteLine($"ERROR: {path} does not exist or is read-only.\nThis error is expected for OriginSetupInternal.exe and can be ignored.");
+        }
+
+        static void EnableResearchDevelopment(string path) {
+            File.WriteAllText(path, "[connection]\r\nEnvironmentName=production\r\n\r\n[Feature]\r\nCdnOverride=akamai");
+            Console.WriteLine("\nR&D mode enabled successfully.");
         }
 
         static void DisableMigration() {
