@@ -13,7 +13,7 @@ As of now, EA is forcing Origin users to "upgrade" to the EA App and uninstall O
 StayOnOrigin+ also allows Origin's hidden Research and Development mode to be enabled for better download performance.
 
 ## How to Use
-Firstly, download the [latest release](https://github.com/VictorPLopes/StayOnOriginPlus/releases) and run the exe. **You do not need to have Origin installed**.
+Firstly, download the [latest release](https://github.com/VictorPLopes/StayOnOriginPlus/releases) and run the exe (as admin). **You do not need to have Origin installed**.
 Then, simply follow the instruction on-screen:
 - If Origin is not installed, you will be prompted to install it. Simply press "Y" and the launcher will be downloaded. StayOnOrigin+ will resume after the install process is over.
 - If the latest versions of Origin are installed, the app will downgrade it to an usable version.
