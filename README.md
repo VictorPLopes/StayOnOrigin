@@ -1,18 +1,30 @@
+# THIS PROGRAM IS CURRENTLY BROKEN
+As of June 19th of 2023, EA rolled a server-side patch that disables the Origin frontend entirely. While the launcher still works after running StayOnOrigin+, the in-app browser now displays the message "Please use EA App to continue" instead of showing the user's library and the Origin Store. It is not know yet if there's a way around this issue (contact me if you know of any workarounds), but considering this seems to be on the server side, I doubt there's much that can be done. If a workaround is found, I will try my best to patch this app, but in the meantime, the repository will be archived, and the app is not expected to work.
+
+## TL;DR - EA rolled a server-side patch to Origin and broke my app.
+
+![image](https://github.com/VictorPLopes/StayOnOriginPlus/assets/77900343/ad602b14-5d81-4b42-8563-9b848337c360)
+
+
 # StayOnOrigin+
+
 Forked from [StayOnOrigin](https://github.com/Dyvinia/StayOnOrigin), developed by [Dyvinia](https://twitter.com/Dyvinia) and I.
 All credits for the idea and creation of the app go to her, and this fork only exists to make some "personal" changes to the program without interfering with Dyvinia's project.
 
 ## Changes from StayOnOrigin
+
 * Downloads the right version of Origin, if no other version is installed (no need to downgrade from the latest version)
 * Includes option to enable [Origin's hidden R&D mode](https://www.pcgamingwiki.com/wiki/Store:Origin#Origin_stops_downloading_after_an_ungiven_threshold), which has been reported to improve download speeds/stability
 * Includes option to open Origin after running the program
 * Updated code
 
 ## Features
+
 As of now, EA is forcing Origin users to "upgrade" to the EA App and uninstall Origin, which lacks many of the features from the old app, and is not as stable. This program restores a previous version of Origin from before the forced migration and "patches" it to never update to the EA App.
 StayOnOrigin+ also allows Origin's hidden Research and Development mode to be enabled for better download performance.
 
 ## How to Use
+
 Firstly, download the [latest release](https://github.com/VictorPLopes/StayOnOriginPlus/releases) and run the exe (as admin). **You do not need to have Origin installed**.
 Then, simply follow the instruction on-screen:
 - If Origin is not installed, you will be prompted to install it. Simply press "Y" and the launcher will be downloaded. StayOnOrigin+ will resume after the install process is over.
@@ -23,6 +35,7 @@ Then, simply follow the instruction on-screen:
 ![StayOnOrigin+](https://user-images.githubusercontent.com/77900343/226762979-69fdb50a-6d52-4382-a711-47b1cb9e1926.png)
 
 ## Credits
+
 Originally created by [Dyvinia](https://twitter.com/Dyvinia) with later improvements by me
 </br>
 Fork developed and mantained by me, [VictorPL](https://github.com/VictorPLopes)
