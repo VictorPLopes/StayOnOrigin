@@ -1,7 +1,7 @@
-# THIS PROGRAM IS CURRENTLY BROKEN
-As of June 19th of 2023, EA rolled a server-side patch that disables the Origin frontend entirely. While the launcher still works after running StayOnOrigin+, the in-app browser now displays the message "Please use EA App to continue" instead of showing the user's library and the Origin Store. It is not know yet if there's a way around this issue (contact me if you know of any workarounds), but considering this seems to be on the server side, I doubt there's much that can be done. If a workaround is found, I will try my best to patch this app, but in the meantime, the repository will be archived, and the app is not expected to work.
+# EA BROKE THIS APP - USE [THIS](https://github.com/p0358/Fuck_off_EA_App) INSTEAD
+As of June 19th of 2023, EA rolled a server-side patch that hides the Origin frontend. While the launcher still works after running StayOnOrigin+, the in-app browser now displays the message "Please use EA App to continue" instead of showing the user's library and the Origin Store. [p0358](https://github.com/p0358) made a [much better app than mine](https://github.com/p0358/Fuck_off_EA_App), that circunvents that issue and allows you to continue using Origin.
 
-## TL;DR - EA rolled a server-side patch to Origin and broke my app.
+## TL;DR - EA rolled a server-side patch to Origin and broke my app, use [this one](https://github.com/p0358/Fuck_off_EA_App) instead
 
 ![image](https://github.com/VictorPLopes/StayOnOriginPlus/assets/77900343/ad602b14-5d81-4b42-8563-9b848337c360)
 
